@@ -1,38 +1,53 @@
-#include "../../ps.h"
+#include "../../inc/ps.h"
 
 void	ft_quicksort_3(t_stack *stack, int len)
 {
 	if (len == 3 && stack->size_a == 3)
 		ft_sort_three_a(stack);
 	else if (len == 2)
+	{
 		if (stack ->a[0] > stack->a[1])
-			ft_sa(stack);
+			ft_sa(stack, 1);
+	}
 	else if (len == 3)
 	{
 		while (len != 3 || !(stack->a[0] < stack->a[1]
 				&& stack->a[1] < stack->a[2]))
 		{
-			if (len == 3 && stack->a[0] > stack->a[1])
-				ft_sa(stack);
+			if (len == 3 && stack->a[0] > stack->a[1] && stack->a[2])
+				ft_sa(stack, 1);
 			else if (len == 3 && !(stack->a[2] > stack->a[0]
 					&& stack->a[2] > stack->a[1]))
 				len = ft_push(stack, len, 0);
 			else if (stack ->a[0] > stack->a[1])
-				ft_sa(stack);
+				ft_sa(stack, 1);
 			else if (len++)
 				ft_pa(stack);
 		}
 	}
 }
 
-int ft_sort_small_b(t_stack *s, int len)
+void	ft_sort_small_b(t_stack *s, int len)
 {
 	if (len == 2)
 	{
 		if (s->b[0] < s->b[1])
-			ft_sb(s);
+			ft_sb(s, 1);
 		while (len--)
 			ft_pa(s);
+	}
+	else if (len == 3)
+	{
+		while (len || !(s->a[0] < s->a[1] && s->a[1] < s->a[2]))
+		{
+			if (len == 1 && s->a[0] > s->a[1])
+				ft_sa(s, 1);
+			else if (len == 1 || (len >= 2 && s->b[0] > s->b[1])
+				|| (len == 3 && s->b[0] > s->b[2]))
+				len = ft_push(s, len, 1);
+			else
+				ft_sb(s, 1);
+		}
 	}
 }
 
@@ -61,6 +76,7 @@ int	ft_quicksort_a(t_stack *stack, int len, int cnt)
 	int	pivot;
 	int	items;
 
+	ft_printf("a cagirlidi\n");
 	if (ft_check_sorted(stack->a, len, 0) == 1)
 		return (1);
 	items = len;
@@ -74,14 +90,14 @@ int	ft_quicksort_a(t_stack *stack, int len, int cnt)
 	while (len != items / 2 + items % 2)
 	{
 		if (stack ->a[0] < pivot && (len--))
-			ft_pb(stack, 0);
+			ft_pb(stack);
 		else if (++cnt)
-			ft_ra(stack);
+			ft_ra(stack, 1);
 	}
 	while (items / 2 + items % 2 != stack->size_a && cnt--)
-		ft_rra(stack);
+		ft_rra(stack, 1);
 	return (ft_quicksort_a(stack, items /  2 + items % 2, 0) &&
-	ft_quicksort_a(stack, items /  2, 0));
+	ft_quicksort_b(stack, items /  2, 0));
 }
 
 int	ft_quicksort_b(t_stack *stack, int len, int cnt)
@@ -89,7 +105,16 @@ int	ft_quicksort_b(t_stack *stack, int len, int cnt)
 	int	pivot;
 	int	items;
 
-	if (ft_check_sorted(stack->b, len, 1) == 1)
+	ft_printf("b cagirlidi\n");
+	ft_printf("Stack B : ");
+	int k = 0;
+	while (k < stack->size_b)
+	{
+		ft_printf("%d ",stack->b[k]);
+		k++;
+	}
+	ft_printf("\n");
+	if (!cnt && ft_check_sorted(stack->b, len, 1) == 1)
 		while (len--)
 			ft_pa(stack);
 	if (len <= 3)
@@ -100,15 +125,33 @@ int	ft_quicksort_b(t_stack *stack, int len, int cnt)
 	items = len;
 	if (!ft_get_mediane(&pivot, stack->b, len))
 		return (0);
+	int i = 0;
+	ft_printf("Gerekli Bilgiler\nLEN BILGISI : %d\nPIVOT : %d\n", len, pivot);
+	ft_printf("Stack A : ");
+	while (i < stack->size_a)
+	{
+		ft_printf("%d ", stack->a[i]);
+		i++;
+	}
+	ft_printf("\n");
 	while (len != items / 2)
 	{
+		sleep(2);
+		ft_printf("Stack B : ");
+		k = 0;
+		while (k < stack->size_b)
+		{
+			ft_printf("%d ",stack->b[k]);
+			k++;
+		}
+		ft_printf("\n");
 		if (stack ->b[0] >= pivot && len--)
 			ft_pa(stack);
 		else if(++cnt)
-			ft_rb(stack);
+			ft_rb(stack, 1);
 	}
 	while (items / 2 != stack -> size_b && cnt--)
-		ft_rrb(stack);
+		ft_rrb(stack, 1);
 	return (ft_quicksort_a(stack, items /  2 + items % 2, 0) &&
-	ft_quicksort_a(stack, items /  2, 0));
+	ft_quicksort_b(stack, items /  2, 0));
 }

@@ -1,4 +1,4 @@
-#include "../../ps.h"
+#include "../../inc/ps.h"
 
 int	find_av_size(char **av)
 {
@@ -57,7 +57,7 @@ int	ft_ps_atoi(char *c, int *stack)
 	}
 	if (nb > 2147483647 || nb < -2147483648)
 		ft_error(stack);
-	return (nb);
+	return (nb * sign);
 }
 
 int	ft_check_sorted(int *a, int size, int type)
@@ -82,7 +82,15 @@ int	ft_check_sorted(int *a, int size, int type)
 		{
 			if (a[i - 1] < a[i])
 				return (0);
+			i++;
 		}
 		return (1);
 	}
+}
+
+void	ft_error(int *stack)
+{
+	free(stack);
+	ft_printf("Error\n");
+	exit (1);
 }

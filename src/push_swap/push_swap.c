@@ -1,4 +1,4 @@
-#include "ps.h"
+#include "../../inc/ps.h"
 
 void	ft_push_swap(char **av)
 {
@@ -23,6 +23,13 @@ void	ft_push_swap(char **av)
 		stack.a[i] = ft_ps_atoi(av[i], stack.a);
 	ft_check_repeat(stack.a, size);
 	ft_sort(&stack, size);
+	ft_printf("Stack A : ");
+	int k = 0;
+	while (k < stack.size_a)
+	{
+		ft_printf("%d ",stack.a[k]);
+		k++;
+	}
 	free(stack.a);
 	free(stack.b);
 }
