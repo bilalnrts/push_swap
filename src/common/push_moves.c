@@ -1,6 +1,6 @@
 #include "../../inc/ps.h"
 
-void	ft_pb(t_stack *stack)
+void	ft_pb(t_stack *stack, int sign)
 {
 	int	i;
 
@@ -15,11 +15,16 @@ void	ft_pb(t_stack *stack)
 		stack->size_a--;
 		while (++i < stack->size_a)
 			stack->a[i] = stack->a[i + 1];
-		ft_printf("pb\n");
+		if (sign == 1)
+			ft_printf("pb\n");
+	}
+	else
+	{
+		return ;
 	}
 }
 
-void	ft_pa(t_stack *stack)
+void	ft_pa(t_stack *stack, int sign)
 {
 	int	i;
 
@@ -34,7 +39,8 @@ void	ft_pa(t_stack *stack)
 		stack->size_b--;
 		while (++i < stack->size_b)
 			stack->b[i] = stack->b[i + 1];
-		ft_printf("pa\n");
+		if (sign == 1)
+			ft_printf("pa\n");
 	}
 	else
 	{

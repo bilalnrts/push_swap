@@ -4,9 +4,8 @@ void	ft_sa(t_stack *stack, int sign)
 {
 	int tmp;
 
-	if ((stack->size_a == 0 || stack->size_a == 1) && sign == 1)
+	if ((stack->size_a == 0 || stack->size_a == 1))
 	{
-		// ft_printf("Nothing done. Very few numbers in stack A.\n");
 		return ;
 	}
 	tmp = stack->a[0];
@@ -32,7 +31,7 @@ void	ft_sb(t_stack *stack, int sign)
 		ft_printf("sb\n");
 }
 
-void	ft_ss(t_stack *stack)
+void	ft_ss(t_stack *stack, int sign)
 {
 	if ((stack->size_a == 0 || stack->size_a == 1)
 		|| (stack->size_b == 0 || stack->size_b == 1))
@@ -40,7 +39,8 @@ void	ft_ss(t_stack *stack)
 		// ft_printf("Nothing done. Very few numbers in stack A or B.\n");
 		return ;
 	}
-	ft_sa(stack, 0);
-	ft_sb(stack, 0);
-	ft_printf("ss\n");
+	ft_sa(stack, sign);
+	ft_sb(stack, sign);
+	if (sign == 1)
+		ft_printf("ss\n");
 }

@@ -60,9 +60,9 @@ void	ft_sort_three_a(t_stack *s)
 int	ft_push(t_stack *stack, int len, int operation)
 {
 	if (operation == 0)
-		ft_pb(stack);
+		ft_pb(stack, 1);
 	else
-		ft_pa(stack);
+		ft_pa(stack, 1);
 	len--;
 	return (len);
 }

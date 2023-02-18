@@ -55,7 +55,7 @@ int	ft_ps_atoi(char *c, int *stack)
 		nb = (nb * 10) + (c[i] - 48);
 		i++;
 	}
-	if (nb > 2147483647 || nb < -2147483648)
+	if ((nb > 2147483647 && sign == 1) || (nb > 2147483648 && sign == -1))
 		ft_error(stack);
 	return (nb * sign);
 }
