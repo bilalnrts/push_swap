@@ -1,4 +1,16 @@
-#include "../../inc/ps.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: binurtas <binurtas@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/18 15:57:00 by binurtas          #+#    #+#             */
+/*   Updated: 2023/02/18 15:57:01 by binurtas         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../inc/push_swap.h"
 
 int	ft_strcmp(const char *s1, const char *s2)
 {
@@ -47,7 +59,7 @@ void	ft_create_stacks(char **av, t_stack *s)
 	int	i;
 
 	i = -1;
-	s->size_a = find_av_size(av);
+	s->size_a = ft_find_av_size(av);
 	s->a = malloc(s->size_a * sizeof(int));
 	s->b = malloc(s->size_a * sizeof(int));
 	s->size_b = 0;

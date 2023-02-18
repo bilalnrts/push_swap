@@ -1,13 +1,25 @@
-#include "../../inc/ps.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: binurtas <binurtas@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/18 15:57:26 by binurtas          #+#    #+#             */
+/*   Updated: 2023/02/18 15:59:15 by binurtas         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../inc/push_swap.h"
 
 void	ft_push_swap(char **av)
 {
 	t_stack	stack;
-	int	size;
-	int	i;
+	int		size;
+	int		i;
 
 	i = -1;
-	size = find_av_size(av);
+	size = ft_find_av_size(av);
 	stack.a = malloc(size * sizeof(int));
 	if (!stack.a)
 		return ;
@@ -27,7 +39,7 @@ void	ft_push_swap(char **av)
 	free(stack.b);
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	if (ac > 1)
 	{

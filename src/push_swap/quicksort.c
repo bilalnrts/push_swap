@@ -1,4 +1,16 @@
-#include "../../inc/ps.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   quicksort.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: binurtas <binurtas@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/18 15:57:27 by binurtas          #+#    #+#             */
+/*   Updated: 2023/02/18 17:20:31 by binurtas         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../inc/push_swap.h"
 
 void	ft_quicksort_3(t_stack *stack, int len)
 {
@@ -29,7 +41,7 @@ void	ft_quicksort_3(t_stack *stack, int len)
 
 void	ft_sort_small_b(t_stack *s, int len)
 {
-	if (len == 1) // sil bunu gereksiz
+	if (len == 1)
 		ft_pa(s, 1);
 	else if (len == 2)
 	{
@@ -97,8 +109,8 @@ int	ft_quicksort_a(t_stack *stack, int len, int cnt)
 	}
 	while (items / 2 + items % 2 != stack->size_a && cnt--)
 		ft_rra(stack, 1);
-	return (ft_quicksort_a(stack, items /  2 + items % 2, 0) &&
-	ft_quicksort_b(stack, items /  2, 0));
+	return (ft_quicksort_a(stack, items / 2 + items % 2, 0)
+		&& ft_quicksort_b(stack, items / 2, 0));
 }
 
 int	ft_quicksort_b(t_stack *stack, int len, int cnt)
@@ -126,6 +138,6 @@ int	ft_quicksort_b(t_stack *stack, int len, int cnt)
 	}
 	while (items / 2 != stack -> size_b && cnt--)
 		ft_rrb(stack, 1);
-	return (ft_quicksort_a(stack, items /  2 + items % 2, 0) &&
-	ft_quicksort_b(stack, items /  2, 0));
+	return (ft_quicksort_a(stack, items / 2 + items % 2, 0)
+		&& ft_quicksort_b(stack, items / 2, 0));
 }

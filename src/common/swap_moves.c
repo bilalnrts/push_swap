@@ -1,8 +1,20 @@
-#include "../../inc/ps.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   swap_moves.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: binurtas <binurtas@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/18 15:57:19 by binurtas          #+#    #+#             */
+/*   Updated: 2023/02/18 15:58:13 by binurtas         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../inc/push_swap.h"
 
 void	ft_sa(t_stack *stack, int sign)
 {
-	int tmp;
+	int	tmp;
 
 	if ((stack->size_a == 0 || stack->size_a == 1))
 	{
@@ -17,11 +29,10 @@ void	ft_sa(t_stack *stack, int sign)
 
 void	ft_sb(t_stack *stack, int sign)
 {
-	int tmp;
+	int	tmp;
 
-	if ((stack->size_b == 0 || stack->size_b == 1) && sign == 1)
+	if ((stack->size_b == 0 || stack->size_b == 1))
 	{
-		// ft_printf("Nothing done. Very few numbers in stack B.\n");
 		return ;
 	}
 	tmp = stack->b[0];
@@ -36,7 +47,6 @@ void	ft_ss(t_stack *stack, int sign)
 	if ((stack->size_a == 0 || stack->size_a == 1)
 		|| (stack->size_b == 0 || stack->size_b == 1))
 	{
-		// ft_printf("Nothing done. Very few numbers in stack A or B.\n");
 		return ;
 	}
 	ft_sa(stack, sign);

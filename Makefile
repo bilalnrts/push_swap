@@ -68,6 +68,7 @@ fclean:			clean
 				@$(RM) libft.a
 				@$(RM) $(LIBFT)/libft.a
 				@$(RM) libftprintf.a
+				@$(RM) checker
 				@$(RM) $(LIBFT)/ft_printf/libftprintf.a
 				@rm -rf *.dSYM
 				@find . -name ".DS_Store" -delete

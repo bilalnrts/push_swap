@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   gnl.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: binurtas <binurtas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/18 15:55:21 by binurtas          #+#    #+#             */
-/*   Updated: 2023/02/18 15:55:31 by binurtas         ###   ########.fr       */
+/*   Created: 2023/02/18 15:55:26 by binurtas          #+#    #+#             */
+/*   Updated: 2023/02/18 15:56:09 by binurtas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-# include <stdarg.h>
-# include <unistd.h>
+# include <stdlib.h>
 
-int		ft_printf(const char *str, ...);
-int		ft_putchar(char c);
-int		ft_putstr(char *s);
-int		ft_putptr(void *p);
-int		ft_putnbr(long n);
-int		ft_puthex(unsigned int n, char c);
-int		ft_type(va_list ap, char c);
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
+
+char	*get_next_line(int fd);
+char	*ft_read_to_left_str(int fd, char *left_str);
+char	*ft_strchrgnl(char *s, int c);
+char	*ft_strjoingnl(char *left_str, char *buff);
+size_t	ft_strlengnl(char *s);
+char	*ft_get_line(char *left_str);
+char	*ft_new_left_str(char *left_str);
+
 #endif
