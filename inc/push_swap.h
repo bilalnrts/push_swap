@@ -6,7 +6,7 @@
 /*   By: binurtas <binurtas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 15:21:27 by binurtas          #+#    #+#             */
-/*   Updated: 2023/02/18 18:54:02 by binurtas         ###   ########.fr       */
+/*   Updated: 2023/02/27 15:33:58 by binurtas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 typedef struct s_stacks
 {
-	int *a;
+	int	*a;
 	int	*b;
 	int	size_a;
 	int	size_b;

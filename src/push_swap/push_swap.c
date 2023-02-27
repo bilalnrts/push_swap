@@ -6,7 +6,7 @@
 /*   By: binurtas <binurtas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 15:57:26 by binurtas          #+#    #+#             */
-/*   Updated: 2023/02/18 15:59:15 by binurtas         ###   ########.fr       */
+/*   Updated: 2023/02/27 15:33:09 by binurtas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ char	*ft_conc_values(char **av)
 	char	*str;
 
 	i = 0;
-	while(av[i])
+	str = ft_calloc(2, sizeof(char));
+	while (av[i])
 	{
 		if (ft_strncmp(av[i], "", 2) == 0)
 		{
